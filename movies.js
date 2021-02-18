@@ -68,7 +68,10 @@ for(i=0; i<movies.length;i++){
     document.querySelector(`.movies-${movie.id} .watched-button`).addEventListener('click', async function(event) {
     event.preventDefault()
     document.querySelector(`.movies-${movie.id}`).classList.add('opacity-20')
-    console.log(`I watched ${movie.title}.`)
+    console.log(`watched ${movie.title}.`)
+  
+    let docRef = await db.collection('watched').doc(`${movie.id}`).set({})
+      
   })
 
 
@@ -94,7 +97,7 @@ for(i=0; i<movies.length;i++){
   // - Hint: you can use if (document) with no comparison
   //   operator to test for the existence of an object.
 
-
+  
 
 
 
