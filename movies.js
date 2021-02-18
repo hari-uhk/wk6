@@ -97,9 +97,19 @@ for(i=0; i<movies.length;i++){
   // - Hint: you can use if (document) with no comparison
   //   operator to test for the existence of an object.
 
+  let querySnapshot = await db.collection('watched').get()
+  console.log(querySnapshot.size)
   
+  if(querySnapshot.data()){
+    document.querySelector(`.movies-${movie.id}`).classList.add('opacity-20')
+  } else {
+    console.log('yet to watch')
+  }
+  // let watchedlist = querySnapshot.docs
+  // console.log(watchedlist)
 
-
+  // let id = watchedlist.id
+  // console.log(id.size)
 
 
 
