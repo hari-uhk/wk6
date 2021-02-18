@@ -51,6 +51,15 @@ for(i=0; i<movies.length;i++){
   </div>
 `)
 
+let querySnapshot = await db.collection('watched').doc(`${movie.id}`).get()
+console.log(querySnapshot.size)
+
+let watcheditems = querySnapshot.data()
+console.log(watcheditems)
+
+if(watcheditems){
+  document.querySelector(`.movies-${movie.id}`).classList.add('opacity-20')
+} 
   // ⬆️ ⬆️ ⬆️ 
   // End Step 2
 
@@ -71,7 +80,10 @@ for(i=0; i<movies.length;i++){
     console.log(`watched ${movie.title}.`)
   
     let docRef = await db.collection('watched').doc(`${movie.id}`).set({})
-      
+    
+ 
+    
+ 
   })
 
 
@@ -97,14 +109,7 @@ for(i=0; i<movies.length;i++){
   // - Hint: you can use if (document) with no comparison
   //   operator to test for the existence of an object.
 
-  let querySnapshot = await db.collection('watched').get()
-  console.log(querySnapshot.size)
-  
-  if(querySnapshot.data()){
-    document.querySelector(`.movies-${movie.id}`).classList.add('opacity-20')
-  } else {
-    console.log('yet to watch')
-  }
+
   // let watchedlist = querySnapshot.docs
   // console.log(watchedlist)
 
